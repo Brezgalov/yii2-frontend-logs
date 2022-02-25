@@ -1,0 +1,21 @@
+{
+  "name": "brezgalov/yii2-frontend-logs",
+  "description": "This package provides basic logs api for frontend apps",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Oleg Brezgalov",
+      "email": "oleg.brezgalov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "yiisoft/yii2": ">=2.0.44"
+  },
+  "autoload": {
+    "psr-4": {
+      "Brezgalov\\FrontendLogs\\": "src/"
+    }
+  }
+}
