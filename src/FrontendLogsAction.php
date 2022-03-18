@@ -2,6 +2,7 @@
 
 namespace Brezgalov\FrontendLogs;
 
+use yii\base\Model;
 use yii\base\Action;
 use yii\base\InvalidConfigException;
 use yii\web\ServerErrorHttpException;
@@ -12,6 +13,19 @@ class FrontendLogsAction extends Action
      * @var ILoggerStorage
      */
     public $logStorage;
+
+    /**
+     * @var string|array
+     */
+    public $dto = FrontendLogDto::class;
+
+    /**
+     * @return Model
+     */
+    protected function getDto()
+    {
+        return \Yii::createObject($this->dto);
+    }
 
     /**
      * @return FrontendLogDto|bool[]
@@ -30,7 +44,7 @@ class FrontendLogsAction extends Action
             throw new InvalidConfigException('logStorage is invalid');
         }
 
-        $dto = new FrontendLogDto();
+        $dto = $this->getDto();
         $dto->load(\Yii::$app->request->getBodyParams(), '');
 
         if (empty($dto->action)) {
